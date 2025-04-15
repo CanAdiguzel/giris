@@ -33,69 +33,7 @@
           lon: lon
         };
 
-        fetch("<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>İşe Giriş</title>
-</head>
-<body>
-  <h2>📍 İşe Giriş Takibi</h2>
-  <input type="text" id="name" placeholder="Adınızı girin"><br><br>
-  <button onclick="sendData()">Geldim</button>
-  <p id="status"></p>
-
-  <script>
-    function sendData() {
-      const name = document.getElementById('name').value;
-      if (!name) {
-        alert("Adınızı giriniz.");
-        return;
-      }
-
-      if (!navigator.geolocation) {
-        alert("Tarayıcınız konum desteği sunmuyor.");
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(function(position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        const payload = {
-          ad: name,
-          lat: lat,
-          lon: lon
-        };
-
-        fetch("https://script.google.com/macros/s/AKfycbzTg217KroWyTXx65E_RpxkcLbR_UF_26o0y1BWb2vZ6WA2_WEO0OsujR9qHT_PTLbDZQ/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload)
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'success') {
-            document.getElementById("status").innerText = "✅ Kayıt başarılı!";
-          } else {
-            document.getElementById("status").innerText = "❌ Kayıt başarısız: " + data.message;
-          }
-        })
-        .catch(error => {
-          console.error("Hata:", error);
-          document.getElementById("status").innerText = "❌ Kayıt başarısız (bağlantı hatası).";
-        });
-
-      }, function(error) {
-        alert("Konum alınamadı: " + error.message);
-      });
-    }
-  </script>
-</body>
-</html>
-", {
+        fetch("https://script.google.com/macros/s/AKfycbxJQy7ccXw4yXpLpP9PT18IdtZwEUemDv97RR8vMg4PPjJaX4lepl5Y-9-9Pg8S5Yhoeg/exec", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
